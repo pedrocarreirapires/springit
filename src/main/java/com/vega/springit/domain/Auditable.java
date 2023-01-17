@@ -1,5 +1,6 @@
 package com.vega.springit.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -8,7 +9,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.concurrent.ThreadLocalRandom;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -35,6 +38,7 @@ public abstract class Auditable {
     }
 
     public LocalDateTime getCreationDate() {
+        creationDate = LocalDateTime.now();
         return creationDate;
     }
 
