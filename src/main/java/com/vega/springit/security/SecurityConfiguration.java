@@ -17,7 +17,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserDetailsServiceImpl userDetailsService;
 
-
     public SecurityConfiguration(UserDetailsServiceImpl userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
@@ -33,10 +32,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/link/submit").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll()
                 .and()
-                .formLogin()
+                    .formLogin()
+                        .loginPage("/login").permitAll()
+                .usernameParameter("email")
                 .and()
-                .csrf().disable()
-                .headers().frameOptions().disable();
+                .logout()
+                .and()
+                .rememberMe();
+//                .logoutUrl("/my/logout")
+//                .logoutSuccessUrl("/my/index")
+//                .logoutSuccessHandler(logoutSuccessHandler)
+//                .invalidateHttpSession(true)
+
+
+//                .and()
+//                    .csrf().disable()
+//                    .headers().frameOptions().disable();
 
     }
 
