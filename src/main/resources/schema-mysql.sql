@@ -33,3 +33,18 @@ CREATE TABLE `link` (
                         `url` varchar(255) DEFAULT NULL,
                         PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+DROP TABLE IF EXISTS `link`;
+CREATE TABLE `link` (
+                        `id` bigint(20) NOT NULL AUTO_INCREMENT,
+                        `created_by` varchar(255) DEFAULT NULL,
+                        `creation_date` datetime DEFAULT NULL,
+                        `last_modified_by` varchar(255) DEFAULT NULL,
+                        `last_modified_date` datetime DEFAULT NULL,
+                        `title` varchar(255) DEFAULT NULL,
+                        `url` varchar(255) DEFAULT NULL,
+                        PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
