@@ -22,6 +22,4 @@ public class SpringitApplication {
 	PrettyTime prettyTime(){
 		return new PrettyTime();
 	}
-
-
 }
