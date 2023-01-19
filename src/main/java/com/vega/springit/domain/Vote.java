@@ -1,16 +1,16 @@
 package com.vega.springit.domain;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Data
 @NoArgsConstructor
+@RequiredArgsConstructor
+@Getter @Setter
 public class Vote {
 
 
@@ -18,6 +18,10 @@ public class Vote {
     @GeneratedValue
     private Long id;
 
-    private int vote;
+    @NonNull
+    private short direction;
 
+    @NonNull
+    @ManyToOne
+    private Link link;
 }

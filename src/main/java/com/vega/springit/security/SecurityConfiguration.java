@@ -4,6 +4,8 @@ import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,6 +15,7 @@ import static org.springframework.web.servlet.function.RequestPredicates.headers
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserDetailsServiceImpl userDetailsService;
@@ -38,16 +41,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .and()
-                .rememberMe();
+                .rememberMe()
 //                .logoutUrl("/my/logout")
 //                .logoutSuccessUrl("/my/index")
 //                .logoutSuccessHandler(logoutSuccessHandler)
 //                .invalidateHttpSession(true)
 
 
-//                .and()
-//                    .csrf().disable()
-//                    .headers().frameOptions().disable();
+                .and()
+                    .csrf().disable()
+                    .headers().frameOptions().disable();
 
     }
 
