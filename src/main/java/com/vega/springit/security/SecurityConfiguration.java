@@ -30,27 +30,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .requestMatchers(EndpointRequest.to("info")).permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ADMIN")
-                .antMatchers("/").permitAll()
                 .antMatchers("/actuator/").hasRole("ADMIN")
+                .antMatchers("/").permitAll()
                 .antMatchers("/link/submit").hasRole("USER")
                 .antMatchers("/h2-console/**").permitAll()
                 .and()
-                    .formLogin()
-                        .loginPage("/login").permitAll()
+                .formLogin()
+                .loginPage("/login").permitAll()
                 .usernameParameter("email")
                 .and()
                 .logout()
                 .and()
                 .rememberMe()
-//                .logoutUrl("/my/logout")
-//                .logoutSuccessUrl("/my/index")
-//                .logoutSuccessHandler(logoutSuccessHandler)
-//                .invalidateHttpSession(true)
-
-
                 .and()
-                    .csrf().disable()
-                    .headers().frameOptions().disable();
+                .csrf().disable()
+                .headers().frameOptions().disable();
 
     }
 

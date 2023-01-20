@@ -81,7 +81,7 @@ public class LinkController {
             redirectAttributes
                     .addAttribute("id", link.getId())
                     .addFlashAttribute("success", true);
-            return "redirect:/link/{id}";
+            return "redirect:/link/" + link.getId();
         }
     }
 
